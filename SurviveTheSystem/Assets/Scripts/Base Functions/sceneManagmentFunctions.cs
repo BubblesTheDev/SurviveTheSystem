@@ -8,7 +8,7 @@ public class sceneManagmentFunctions : MonoBehaviour
     public static void loadScene(int sceneIndex)
     {
         
-        if(sceneIndex > SceneManager.sceneCount)
+        if(sceneIndex > SceneManager.sceneCountInBuildSettings)
         {
             Debug.LogWarning("There is no scene with an index of " + sceneIndex);
             Debug.LogWarning("Please make sure all scenes are loaded in the build settings before trying again");
