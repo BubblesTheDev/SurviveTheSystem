@@ -21,7 +21,7 @@ public class speechHandeler : MonoBehaviour
     [HideInInspector]
     public int choicesMade;
     public int choicesToMake;
-    public List<string> speechList;
+    public List<wordChoices> speechList;
 
     [Space, Header("Choosing Settings")]
     public GameObject cameraObj;
@@ -104,7 +104,7 @@ public class speechHandeler : MonoBehaviour
         }
         if (choicesMade < choicesToMake)
         {
-            speechList.Add(objChosen.transform.name);
+            //speechList.Add(objChosen.transform.name);
             hasSpawned = false;
             choicesMade++;
         }
@@ -133,4 +133,11 @@ public class speechHandeler : MonoBehaviour
         }
         else currentTime = 0;
     }
+}
+
+[System.Serializable]
+public struct wordChoices {
+    public string speechPart;
+    public List<string> goodChoices;
+    public List<string> badChoice;
 }

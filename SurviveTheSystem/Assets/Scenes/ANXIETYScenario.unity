@@ -1758,8 +1758,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAngle: -75
   maxAngle: 85
-  sensX: 200
-  sensY: 200
+  sensX: 150
+  sensY: 150
   orientation: {fileID: 1711142627}
 --- !u!114 &1021981409
 MonoBehaviour:
