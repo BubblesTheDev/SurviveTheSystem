@@ -167,6 +167,106 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9082677773538153856, guid: 5ea5fcb59962c7d499f8387e7a17b751, type: 3}
   m_PrefabInstance: {fileID: 969173008}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &78347915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78347916}
+  - component: {fileID: 78347919}
+  - component: {fileID: 78347918}
+  - component: {fileID: 78347917}
+  m_Layer: 5
+  m_Name: Text Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &78347916
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78347915}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1790382174}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &78347917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78347915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &78347918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78347915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &78347919
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78347915}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &90366918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,6 +3921,7 @@ Transform:
   - {fileID: 1969780429}
   - {fileID: 913158341}
   - {fileID: 1306717238}
+  - {fileID: 78347916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3841,22 +3942,15 @@ MonoBehaviour:
   spawnBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 5, z: 10}
-  possibleGoodChoices:
-  - {fileID: 7806984455074178729, guid: dbc610957a8744d49a91b01213c4a97b, type: 3}
-  possibleBadChoices:
-  - {fileID: 114003817100925672, guid: d8f0f1c4aca76fe4a81f551bc107de41, type: 3}
-  maxChoicesPerBurst: 10
-  maxGoodChoices: 6
-  maxBadChoices: 4
-  timePerBurst: 15
+  speechPartIndex: 0
+  speechList: []
+  maxTimeForChoice: 0
   hasSpawned: 0
   brainfog:
   - {fileID: 6655378699657901185, guid: b41aa3e1611b27c43a98fd005dfc6b5b, type: 3}
   - {fileID: 7900730138174675256, guid: 55c7d252f368cda4e9313532624aeceb, type: 3}
   - {fileID: 4135783383741283256, guid: 9de9b9c03644388449ffe40190320a7f, type: 3}
-  choicesMade: 0
-  choicesToMake: 5
-  speechList: []
+  choicePrefab: {fileID: 0}
   cameraObj: {fileID: 1021981406}
   rayCastThickness: 1
   layersToHit:
@@ -3864,6 +3958,7 @@ MonoBehaviour:
     m_Bits: 64
   timeToChoose: 1
   choosingBar: {fileID: 1748636048}
+  audioPlayer: {fileID: 0}
 --- !u!114 &1790382176
 MonoBehaviour:
   m_ObjectHideFlags: 0
