@@ -1,9 +1,64 @@
 fileFormatVersion: 2
-guid: 2430c82a5979b4942a09649e02925d81
+guid: f882a52ebe09e3c43aae49143d8a09b0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ArmRest
+    second: {fileID: 2100000, guid: 4753d7f760bcb814e8c7b49c7d955271, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curtain
+    second: {fileID: 2100000, guid: 6565ac3f15e48684f827e325492776a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curtain stuff
+    second: {fileID: 2100000, guid: f674c4a0e2090cc45a7c4c6cde4ba35a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light
+    second: {fileID: 2100000, guid: 3aca58fc1a5ecc04e987712fb369b1c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightingMetal
+    second: {fileID: 2100000, guid: a6b8c60cc83fe1e4d9aa90f73d1e8f46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightingMetal.001
+    second: {fileID: 2100000, guid: 990b4d85d12336145ab22d32bf1e7987, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rope
+    second: {fileID: 2100000, guid: e1662b8da66ec8c4a98ca28c712218f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SittingPlace
+    second: {fileID: 2100000, guid: b68be73d689cdbc4988ddfda09add1ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stage
+    second: {fileID: 2100000, guid: cf79ce009f6e54f4da5931937301fdf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs
+    second: {fileID: 2100000, guid: a91f4f7b5fe15cb45bd9d75fc1b392d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2100000, guid: 20908f1d1d007fa45bf179158b285a50, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
