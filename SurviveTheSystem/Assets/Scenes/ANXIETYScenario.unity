@@ -3943,7 +3943,137 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 5, z: 10}
   speechPartIndex: 0
-  speechList: []
+  speechList:
+  - startingPart: 'I speak to you as a friend as one who knows your deep attachment
+      to your fatherland. '
+    endingPart: addresses the Cuban missile crisis on October 22nd, 1962.
+    startingPartAudio: {fileID: 8300000, guid: e29b4d727f9bf874b93882809c578de9, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: aeecdba91c3f2cb4cae82c1896a61f38, type: 3}
+    goodChoices:
+    - choiceText: President Kennedy
+      choiceAudio: {fileID: 8300000, guid: d36be64c0dc5c334fac390cf21951814, type: 3}
+    - choiceText: The 35th President of the United States
+      choiceAudio: {fileID: 8300000, guid: b6c220dd2e664554ba8370142d1605c6, type: 3}
+    badChoices:
+    - choiceText: Will Smith
+      choiceAudio: {fileID: 8300000, guid: 9a250b4d2d288734fb6c6c40871af2d1, type: 3}
+    - choiceText: Leonardo Di'Caprio
+      choiceAudio: {fileID: 8300000, guid: 6bfeb5fa150514640a2f6a13d6a37711, type: 3}
+    - choiceText: J.K Rowling
+      choiceAudio: {fileID: 8300000, guid: 45c69d0df26e2bf47a15be72b22bca49, type: 3}
+  - startingPart: With this, he told his fellow citizens about the discovery of the
+    endingPart: located in Cuba.
+    startingPartAudio: {fileID: 8300000, guid: 8ff3f344d8af08c4490ef17eddb0c18b, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: 3796402b033409747aacc29c247ac7f2, type: 3}
+    goodChoices:
+    - choiceText: bases
+      choiceAudio: {fileID: 8300000, guid: 8798bbfd6e2dc0a49b9421a816c5e156, type: 3}
+    - choiceText: war camps
+      choiceAudio: {fileID: 8300000, guid: 579d2f7085ec51349922d8f34b5eaa21, type: 3}
+    badChoices:
+    - choiceText: chocolate factories
+      choiceAudio: {fileID: 8300000, guid: 88b42f4b21cd7c34893e03045da28a2c, type: 3}
+    - choiceText: burrito places
+      choiceAudio: {fileID: 8300000, guid: 9d28e7ce80561bd409ae23e8e65951f3, type: 3}
+    - choiceText: 'money laundering services '
+      choiceAudio: {fileID: 8300000, guid: 97685a41a920dd34d845fe1303e4f062, type: 3}
+  - startingPart: The President saw this as a threat, seeing that the
+    endingPart: were only several miles away.
+    startingPartAudio: {fileID: 8300000, guid: 08df8582b978a4840b13358fa9e30590, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: f893c62930f8732488aa65072d614815, type: 3}
+    goodChoices:
+    - choiceText: missles
+      choiceAudio: {fileID: 8300000, guid: 09902cd570ff90742ae306b33e783d8f, type: 3}
+    - choiceText: bombs
+      choiceAudio: {fileID: 8300000, guid: e46480e6ffd834f4589b306107a2ec5b, type: 3}
+    badChoices:
+    - choiceText: lemons
+      choiceAudio: {fileID: 8300000, guid: 03ae9311ab47d1c428a0d37df9b42cb6, type: 3}
+    - choiceText: potatoes
+      choiceAudio: {fileID: 8300000, guid: 9eeba25c6a8456149bfff911ba626768, type: 3}
+    - choiceText: strawberries
+      choiceAudio: {fileID: 8300000, guid: 1ff5cad3cdc5ed24c90757c7dfbc2d61, type: 3}
+  - startingPart: 'Today, I am here to inform '
+    endingPart: about what was almost a nuclear war.
+    startingPartAudio: {fileID: 8300000, guid: 856aafe66e230374c9fa0f209875af62, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: 0ea88e3c55c34c64ca350c047ae5f836, type: 3}
+    goodChoices:
+    - choiceText: you people
+      choiceAudio: {fileID: 8300000, guid: aefc630b36f9f15419bef56f7f8e3b4a, type: 3}
+    - choiceText: you
+      choiceAudio: {fileID: 8300000, guid: 48e40de7702270d47b5b38ebb06327fb, type: 3}
+    badChoices:
+    - choiceText: 'you idiots '
+      choiceAudio: {fileID: 8300000, guid: 7cd75f80135fd214a91bb2e4debe56ae, type: 3}
+    - choiceText: 'you maniacs '
+      choiceAudio: {fileID: 8300000, guid: 80f647601486e9448bf855a708ebe5ed, type: 3}
+    - choiceText: 'you dummies '
+      choiceAudio: {fileID: 8300000, guid: a71978f84bcdef54aa2bc76ecdf2e504, type: 3}
+  - startingPart: 'On October 16th, 1962, photographs of '
+    endingPart: on Cuba were received by President Kennedy.
+    startingPartAudio: {fileID: 8300000, guid: b4855a8f1ff965d45875f94d962db22d, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: e37277fa69cb3e845aa035486dc8f056, type: 3}
+    goodChoices:
+    - choiceText: 'missle bases '
+      choiceAudio: {fileID: 8300000, guid: d50459ea2d287f847bc1880ac0b1397f, type: 3}
+    - choiceText: 'potential nukes '
+      choiceAudio: {fileID: 8300000, guid: 81652a56512cfad448c9bf05d622abff, type: 3}
+    badChoices:
+    - choiceText: 'saddened individuals '
+      choiceAudio: {fileID: 8300000, guid: 6ac6e6d46d97c8b488df369fb6c96b17, type: 3}
+    - choiceText: desperation
+      choiceAudio: {fileID: 8300000, guid: f4c1ef872b04a9e49ba38c0bdfe5166b, type: 3}
+    - choiceText: 'panic attacks '
+      choiceAudio: {fileID: 8300000, guid: 4fc828d3e5c938a419d8bab9962081a2, type: 3}
+  - startingPart: 'The Soviet Union had placed them there. Both Cuba and the Soviet
+      Union were '
+    endingPart: "countries, and the United States weren\u2019t happy about that. "
+    startingPartAudio: {fileID: 8300000, guid: c2bace2291d842640b5b21f99437f6dc, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: ec26c75792f67834a91a379a67daa9a8, type: 3}
+    goodChoices:
+    - choiceText: communist
+      choiceAudio: {fileID: 8300000, guid: 298015b1d087c3f4c85256e223585b0c, type: 3}
+    - choiceText: wealthy
+      choiceAudio: {fileID: 8300000, guid: 4349b32aed5597347842a18a87bfaaed, type: 3}
+    badChoices:
+    - choiceText: idiotic and restless
+      choiceAudio: {fileID: 8300000, guid: cb0b7735745e9ff4384cba04b4b331ce, type: 3}
+    - choiceText: delirious
+      choiceAudio: {fileID: 8300000, guid: 53a2e012c33f5dc4cab9968f2cead1af, type: 3}
+    - choiceText: unrested
+      choiceAudio: {fileID: 8300000, guid: ff86215c48818d84f98f6e2e94b440f3, type: 3}
+  - startingPart: 'President Kennedy did, however, try to '
+    endingPart: Cuba in April 1961, but failed miserably.
+    startingPartAudio: {fileID: 8300000, guid: c1310dab0cfb20146a1ba58117719b86, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: dfa5e6813136dc847b2ec52b77f084b0, type: 3}
+    goodChoices:
+    - choiceText: invade
+      choiceAudio: {fileID: 8300000, guid: beee383cc69ea9646afc8313334a81c7, type: 3}
+    - choiceText: destroy
+      choiceAudio: {fileID: 8300000, guid: 1818b617659aa1f4abe08d3fa0e6e6cb, type: 3}
+    badChoices:
+    - choiceText: protect
+      choiceAudio: {fileID: 8300000, guid: 5008cedb2a66eb14197d12fb5c880e51, type: 3}
+    - choiceText: help
+      choiceAudio: {fileID: 8300000, guid: 0dc891e042461fd4ea017269afeec572, type: 3}
+    - choiceText: assist
+      choiceAudio: {fileID: 8300000, guid: 329e0f942df9a4d43948f14c6a6df762, type: 3}
+  - startingPart: At this point, President Kennedy had a
+    endingPart: to make.
+    startingPartAudio: {fileID: 8300000, guid: 7464f8e7ad77dad4ab60bd182210b264, type: 3}
+    endingPartAudio: {fileID: 8300000, guid: b000bc80f9c583446bd7d7cad36e9bbc, type: 3}
+    goodChoices:
+    - choiceText: decision
+      choiceAudio: {fileID: 8300000, guid: d0225db1802e3db4f8672ba72257a7fa, type: 3}
+    - choiceText: choice
+      choiceAudio: {fileID: 8300000, guid: 956c3700978b1f44384d525d8e0c79e2, type: 3}
+    badChoices:
+    - choiceText: conclusion of war
+      choiceAudio: {fileID: 8300000, guid: 45304d0294ee431489dc7b47ea2237da, type: 3}
+    - choiceText: 'idiotic point '
+      choiceAudio: {fileID: 8300000, guid: e5925b833f4331d4781598b2d5bfecde, type: 3}
+    - choiceText: analytical point
+      choiceAudio: {fileID: 8300000, guid: 5194dbfc06bb845418ce5539a23e0b49, type: 3}
   maxTimeForChoice: 0
   hasSpawned: 0
   brainfog:
