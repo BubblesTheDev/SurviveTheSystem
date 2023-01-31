@@ -13,22 +13,22 @@ public class speechHandeler : MonoBehaviour
     public Bounds spawnBounds;
     public int speechPartIndex;
     public List<speechPart> speechList;
-    public float maxTimeForChoice; 
-    public bool hasSpawned;
     public GameObject[] brainfog;
     public GameObject choicePrefab;
-    private bool audioHasFinished;
-    
-    
+    private bool isChoosing;
+    public TextMeshProUGUI speechText;
+
+
 
     [Space, Header("Choosing Settings")]
-    public GameObject cameraObj;
+    public GameObject HeadPos;
     public float rayCastThickness;
     public LayerMask layersToHit;
     public float timeToChoose;
-    float currentTime;
+    float currentTime, currentTime2 = 7;
     RaycastHit hit;
     public Image choosingBar;
+    public Image timeToChooseBar;
     private playerHealth health;
 
     public AudioSource audioPlayer;
@@ -37,6 +37,9 @@ public class speechHandeler : MonoBehaviour
     {
         audioPlayer = GetComponent<AudioSource>();
         health = GetComponent<playerHealth>();
+
+
+        StartCoroutine(playAudioStart());
     }
 
 
@@ -44,13 +47,37 @@ public class speechHandeler : MonoBehaviour
     {
         chooseObject();
         choosingBar.fillAmount = currentTime / timeToChoose;
+        timeToChooseBar.fillAmount = currentTime2 / 7f;
+
+        if (isChoosing && currentTime2 > 0 && !audioPlayer.isPlaying)
+        {
+            currentTime2 -= Time.deltaTime;
+        }
+        else if (currentTime2 <= 0) StartCoroutine(choiceHasBeenMade(false, speechList[speechPartIndex].badChoices[Random.Range(0, speechList[speechPartIndex].badChoices.Count)].choiceAudio));
     }
+
+    public void changeSpeechText()
+    {
+        speechText.text = speechList[speechPartIndex].startingPart + " ______ " + speechList[speechPartIndex].endingPart;
+    }
+
+    IEnumerator playAudioStart()
+    {
+        changeSpeechText();
+        audioPlayer.clip = speechList[speechPartIndex].startingPartAudio;
+        audioPlayer.Play();
+        isChoosing = false;
+        yield return new WaitForSeconds(audioPlayer.clip.length);
+        spawnChoices();
+
+    }
+
+
     public void spawnChoices()
     {
-        hasSpawned = true;
 
-        int randomGoodChoiceAmmount = Random.Range(2, speechList[speechPartIndex].goodChoices.Count);
-        int randomBadChoiceAmmount = Random.Range(3, speechList[speechPartIndex].badChoices.Count);
+        int randomGoodChoiceAmmount = Random.Range(2, speechList[speechPartIndex].goodChoices.Count + 1);
+        int randomBadChoiceAmmount = Random.Range(3, speechList[speechPartIndex].badChoices.Count + 1);
 
         for (int i = 0; i < speechList[speechPartIndex].goodChoices.Count;)
         {
@@ -59,26 +86,31 @@ public class speechHandeler : MonoBehaviour
             {
                 GameObject temp = Instantiate(choicePrefab, spawnPoint, Quaternion.identity, transform.Find("Text Canvas"));
 
-                temp.GetComponent<TextMeshPro>().text = speechList[speechPartIndex].goodChoices[i].choiceText;
+                temp.GetComponent<TextMeshProUGUI>().text = speechList[speechPartIndex].goodChoices[i].choiceText;
                 temp.GetComponent<choiceCounter>().isGood = true;
+                temp.GetComponent<choiceCounter>().storedClip = speechList[speechPartIndex].goodChoices[i].choiceAudio;
+
+                temp.name = speechList[speechPartIndex].goodChoices[i].choiceAudio.name;
                 i++;
             }
         }
 
-        for (int i = 0; i < speechList[speechPartIndex].badChoices.Count; i++)
+        for (int i = 0; i < speechList[speechPartIndex].badChoices.Count;)
         {
             Vector3 spawnPoint = getRandomPointInBounds(spawnBounds);
             if (!Physics.CheckSphere(spawnPoint, choiceSize))
             {
                 GameObject temp = Instantiate(choicePrefab, spawnPoint, Quaternion.identity, transform.Find("Text Canvas"));
 
-                temp.GetComponent<TextMeshPro>().text = speechList[speechPartIndex].badChoices[i].choiceText;
+                temp.GetComponent<TextMeshProUGUI>().text = speechList[speechPartIndex].badChoices[i].choiceText;
                 temp.GetComponent<choiceCounter>().isGood = false;
+                temp.GetComponent<choiceCounter>().storedClip = speechList[speechPartIndex].badChoices[i].choiceAudio;
+                temp.name = speechList[speechPartIndex].badChoices[i].choiceAudio.name;
                 i++;
             }
         }
 
-        hasSpawned = false;
+        isChoosing = true;
 
     }
 
@@ -95,22 +127,37 @@ public class speechHandeler : MonoBehaviour
             Random.Range(minZ, -minZ)));
     }
 
-    public void choiceHasBeenMade(bool isGoodChoice, GameObject objChosen)
+    public IEnumerator choiceHasBeenMade(bool isGoodChoice, AudioClip choiceClip)
     {
+        currentTime2 = 7f;
 
         if (!isGoodChoice)
         {
             takeDamage();
         }
 
-        foreach (Transform item in transform.Find("Choice Holder"))
+        foreach (Transform item in transform.Find("Text Canvas"))
         {
             Destroy(item.gameObject);
 
         }
 
-        if (!hasSpawned) spawnChoices();
+        audioPlayer.clip = choiceClip;
+        audioPlayer.Play();
 
+        yield return new WaitForSeconds(audioPlayer.clip.length);
+
+
+        audioPlayer.clip = speechList[speechPartIndex].endingPartAudio;
+        audioPlayer.Play();
+        isChoosing = false;
+
+        yield return new WaitForSeconds(audioPlayer.clip.length+1);
+
+
+        speechPartIndex++;
+        currentTime2 = 7f;
+        StartCoroutine(playAudioStart());
     }
 
     public void takeDamage()
@@ -129,16 +176,21 @@ public class speechHandeler : MonoBehaviour
     public void chooseObject()
     {
 
-        Physics.SphereCast(cameraObj.transform.position, rayCastThickness, cameraObj.transform.forward, out hit, Mathf.Infinity, layersToHit.value);
+        Physics.SphereCast(HeadPos.transform.position, rayCastThickness, HeadPos.transform.forward, out hit, Mathf.Infinity, layersToHit.value);
         if (hit.transform != null)
         {
+            isChoosing = false;
             currentTime += Time.deltaTime;
             if (currentTime > timeToChoose)
             {
-                choiceHasBeenMade(hit.transform.gameObject.GetComponent<choiceCounter>().isGood, hit.transform.gameObject);
+                StartCoroutine(choiceHasBeenMade(hit.transform.gameObject.GetComponent<choiceCounter>().isGood, hit.transform.GetComponent<choiceCounter>().storedClip));
             }
         }
-        else currentTime = 0;
+        else
+        {
+            currentTime = 0;
+            isChoosing = true;
+        }
     }
 }
 

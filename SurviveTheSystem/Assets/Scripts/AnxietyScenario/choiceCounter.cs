@@ -7,16 +7,14 @@ public class choiceCounter : MonoBehaviour
     public speechHandeler handeler;
     public bool isGood;
     GameObject player;
+    public AudioClip storedClip;
 
     private void Awake()
     {
         handeler = GameObject.Find("GameManager").GetComponent<speechHandeler>();
         player = GameObject.Find("Player");
-    }
 
-    private void Update()
-    {
-        transform.LookAt(player.transform);
+        transform.rotation = Quaternion.LookRotation(transform.position - player.transform.position) ;
     }
 
 
