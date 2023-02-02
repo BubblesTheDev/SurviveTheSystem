@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class playerHealth : MonoBehaviour
 {
+
+    public bool deathToMenu;
     public int maxHearts = 3;
     public int currentHearts;
     public GameObject[] healthImage;
     public Image redDamageThing;
 
+    public AudioSource heartBeat;
+
     private void Update()
     {
-        if (currentHearts <= 0) SceneManager.LoadScene(0);
+        if (currentHearts <= 0 && deathToMenu)  SceneManager.LoadScene(0);
+        controlHeartbeat();
     }
 
 
@@ -25,6 +30,24 @@ public class playerHealth : MonoBehaviour
         if(healthImage.Length > 1) Destroy(healthImage[currentHearts - 1]);
 
         currentHearts--;
+    }
+
+    public void controlHeartbeat()
+    {
+        switch (currentHearts)
+        {
+            case 3:
+                heartBeat.volume = .33f/3;
+                break;
+            case 2:
+                heartBeat.volume = .66f/3;
+
+                break;
+            case 1:
+                heartBeat.volume = 1f/3;
+
+                break;
+        }
     }
 
 }

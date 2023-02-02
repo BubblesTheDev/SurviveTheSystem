@@ -45,6 +45,8 @@ public class speechHandeler : MonoBehaviour
 
     private void Update()
     {
+        finishSpeech();
+
         chooseObject();
         choosingBar.fillAmount = currentTime / timeToChoose;
         timeToChooseBar.fillAmount = currentTime2 / 7f;
@@ -192,6 +194,13 @@ public class speechHandeler : MonoBehaviour
             isChoosing = true;
         }
     }
+
+    public void finishSpeech()
+    {
+        if(speechPartIndex >= speechList.Count)
+        sceneManagmentFunctions.loadScene(5);
+    }
+
 }
 
 [System.Serializable]
