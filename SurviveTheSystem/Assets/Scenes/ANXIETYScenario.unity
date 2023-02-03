@@ -10960,7 +10960,7 @@ MonoBehaviour:
     endingPartAudio: {fileID: 8300000, guid: aeecdba91c3f2cb4cae82c1896a61f38, type: 3}
     goodChoices:
     - choiceText: President Kennedy
-      choiceAudio: {fileID: 8300000, guid: d36be64c0dc5c334fac390cf21951814, type: 3}
+      choiceAudio: {fileID: 8300000, guid: 0c4a712c3fef96a43bb99ea6eec87c16, type: 3}
     - choiceText: The 35th President of the United States
       choiceAudio: {fileID: 8300000, guid: b6c220dd2e664554ba8370142d1605c6, type: 3}
     badChoices:
