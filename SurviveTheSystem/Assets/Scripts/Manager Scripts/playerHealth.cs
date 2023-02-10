@@ -37,14 +37,14 @@ public class playerHealth : MonoBehaviour
         switch (currentHearts)
         {
             case 3:
-                heartBeat.volume = .33f/3;
+                heartBeat.volume = .33f;
                 break;
             case 2:
-                heartBeat.volume = .66f/3;
+                heartBeat.volume = .66f;
 
                 break;
             case 1:
-                heartBeat.volume = 1f/3;
+                heartBeat.volume = 1f;
 
                 break;
         }
