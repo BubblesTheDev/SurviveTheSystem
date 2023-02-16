@@ -25,7 +25,7 @@ public class speechHandeler : MonoBehaviour
     public float rayCastThickness;
     public LayerMask layersToHit;
     public float timeToChoose;
-    float currentTime, currentTime2 = 7;
+    float timeToPickupItem, timeToPickupItem2 = 7;
     RaycastHit hit;
     public Image choosingBar;
     public Image timeToChooseBar;
@@ -48,14 +48,14 @@ public class speechHandeler : MonoBehaviour
         finishSpeech();
 
         chooseObject();
-        choosingBar.fillAmount = currentTime / timeToChoose;
-        timeToChooseBar.fillAmount = currentTime2 / 7f;
+        choosingBar.fillAmount = timeToPickupItem / timeToChoose;
+        timeToChooseBar.fillAmount = timeToPickupItem2 / 7f;
 
-        if (isChoosing && currentTime2 > 0 && !audioPlayer.isPlaying)
+        if (isChoosing && timeToPickupItem2 > 0 && !audioPlayer.isPlaying)
         {
-            currentTime2 -= Time.deltaTime;
+            timeToPickupItem2 -= Time.deltaTime;
         }
-        else if (currentTime2 <= 0) StartCoroutine(choiceHasBeenMade(false, speechList[speechPartIndex].badChoices[Random.Range(0, speechList[speechPartIndex].badChoices.Count)].choiceAudio));
+        else if (timeToPickupItem2 <= 0) StartCoroutine(choiceHasBeenMade(false, speechList[speechPartIndex].badChoices[Random.Range(0, speechList[speechPartIndex].badChoices.Count)].choiceAudio));
     }
 
     public void changeSpeechText()
@@ -131,7 +131,7 @@ public class speechHandeler : MonoBehaviour
 
     public IEnumerator choiceHasBeenMade(bool isGoodChoice, AudioClip choiceClip)
     {
-        currentTime2 = 7f;
+        timeToPickupItem2 = 7f;
 
         if (!isGoodChoice)
         {
@@ -158,7 +158,7 @@ public class speechHandeler : MonoBehaviour
 
 
         speechPartIndex++;
-        currentTime2 = 7f;
+        timeToPickupItem2 = 7f;
         StartCoroutine(playAudioStart());
     }
 
@@ -182,15 +182,15 @@ public class speechHandeler : MonoBehaviour
         if (hit.transform != null)
         {
             isChoosing = false;
-            currentTime += Time.deltaTime;
-            if (currentTime > timeToChoose)
+            timeToPickupItem += Time.deltaTime;
+            if (timeToPickupItem > timeToChoose)
             {
                 StartCoroutine(choiceHasBeenMade(hit.transform.gameObject.GetComponent<choiceCounter>().isGood, hit.transform.GetComponent<choiceCounter>().storedClip));
             }
         }
         else
         {
-            currentTime = 0;
+            timeToPickupItem = 0;
             isChoosing = true;
         }
     }

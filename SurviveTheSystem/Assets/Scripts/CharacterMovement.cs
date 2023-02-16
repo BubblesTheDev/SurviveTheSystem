@@ -5,14 +5,14 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public float speed = 5;
-    CharacterController controller;
+    Rigidbody controller;
     public Vector3 moveVector;
 
     float movX, movZ;
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        controller = GetComponent<Rigidbody>();
     }
 
 
@@ -22,13 +22,7 @@ public class CharacterMovement : MonoBehaviour
         movZ = Input.GetAxis("Vertical");
 
         moveVector = transform.forward * movZ + transform.right * movX;
-        
 
-        controller.Move(moveVector.normalized * Time.deltaTime * speed);
-    }
-
-    private void FixedUpdate()
-    {
-        
+        controller.velocity = moveVector.normalized * speed;
     }
 }

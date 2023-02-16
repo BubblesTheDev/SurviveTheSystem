@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class itemManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<int> itemIdsToPickup;
 
-    // Update is called once per frame
-    void Update()
+
+    public void removeItem(int idToRemove)
     {
-        
+
     }
 }

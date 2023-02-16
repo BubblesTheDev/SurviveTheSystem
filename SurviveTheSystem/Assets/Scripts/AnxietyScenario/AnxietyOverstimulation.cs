@@ -64,9 +64,9 @@ public class AnxietyOverstimulation : MonoBehaviour
         cameraFlashes[temp].gameObject.GetComponent<AudioSource>().clip = cameraSounds[Random.Range(0,cameraSounds.Count)];
         cameraFlashes[temp].gameObject.GetComponent<AudioSource>().Play();
 
-        flasher.currentTime = Random.Range(flasher.timeBetweenMin, flasher.timeBetweenMax);
+        flasher.timeToPickupItem = Random.Range(flasher.timeBetweenMin, flasher.timeBetweenMax);
 
-        yield return new WaitForSeconds(flasher.currentTime);
+        yield return new WaitForSeconds(flasher.timeToPickupItem);
 
         StartCoroutine(flashCamera(flasher));
     }
@@ -76,14 +76,14 @@ public class AnxietyOverstimulation : MonoBehaviour
 public struct cameraFlasher
 {
     public float timeBetweenMax, timeBetweenMin;
-    public float currentTime;
+    public float timeToPickupItem;
 
 
     public cameraFlasher(float minTime, float maxTime)
     {
         timeBetweenMin = minTime;
         timeBetweenMax = maxTime;
-        currentTime = 0;
+        timeToPickupItem = 0;
     }
 }
 
