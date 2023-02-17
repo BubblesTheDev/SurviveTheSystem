@@ -4,42 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class itemPickup : MonoBehaviour
-{
+public class itemPickup : MonoBehaviour {
     public float timeToPickupItem;
     [SerializeField] float rayCastThickness;
+    [SerializeField] private float pickupRange;
     public LayerMask itemMask;
     private itemManager manager;
     public Image selectTimerImage;
     private float currentTime;
-    
 
-    private void Awake()
-    {
+
+    private void Awake() {
         manager = GameObject.Find("GameManager").GetComponent<itemManager>();
     }
 
-    public void Update()
-    {
-        if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
-        {
+    public void Update() {
+        if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1)) {
             RaycastHit hit;
-            Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, Mathf.Infinity, itemMask.value);
-            if (hit.transform != null)
-            {
+            Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, pickupRange, itemMask.value);
+            if (hit.transform != null) {
+                print(hit.transform.gameObject.name);
                 currentTime += Time.deltaTime;
-                if (currentTime > timeToPickupItem)
-                {
-                    if (manager.itemIdsToPickup.Contains(hit.transform.gameObject.GetComponent<itemData>().itemId))
-                    {
-                        manager.removeItem(hit.transform.gameObject.GetComponent<itemData>().itemId);
+                if (currentTime > timeToPickupItem) {
+                    if (manager.itemsToPickup.Contains(hit.transform.gameObject)) {
+                        manager.removeItem(hit.transform.gameObject);
+                        currentTime = 0;
                     }
                 }
             }
-        } 
-        else
-        {
+        } else {
             currentTime = 0;
         }
+
+        selectTimerImage.fillAmount = currentTime / timeToPickupItem;
     }
 }

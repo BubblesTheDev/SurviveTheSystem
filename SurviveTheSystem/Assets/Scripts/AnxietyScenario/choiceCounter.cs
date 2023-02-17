@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class choiceCounter : MonoBehaviour
 {
+    public float minRotSpeed, maxRotSpeed;
+    public float rotAngleY;
+    float rotSpeed;
+
+
     public speechHandeler handeler;
     public bool isGood;
     GameObject player;
@@ -17,5 +22,10 @@ public class choiceCounter : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(transform.position - player.transform.position) ;
     }
 
+
+    private void Update() {
+        float rY = Mathf.SmoothStep(-rotAngleY, rotAngleY, Mathf.PingPong(Time.time * rotSpeed, 1));
+        transform.rotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, rY);
+    }
 
 }

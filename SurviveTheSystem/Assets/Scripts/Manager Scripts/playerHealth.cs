@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class playerHealth : MonoBehaviour
 {
 
-    public bool deathToMenu;
-    public int maxHearts = 3;
+    [SerializeField] private bool deathToMenu;
+    [SerializeField] private int maxHearts = 3;
     public int currentHearts;
-    public GameObject[] healthImage;
-    public Image redDamageThing;
+    [SerializeField] private GameObject[] healthImage;
+    [SerializeField] private Image redDamageThing;
 
-    public AudioSource heartBeat;
-
+    [SerializeField] private AudioSource heartBeat;
+    [SerializeField] private AudioClip[] heartbeatSpeeds;
     private void Update()
     {
         if (currentHearts <= 0 && deathToMenu)  SceneManager.LoadScene(0);
@@ -37,15 +37,15 @@ public class playerHealth : MonoBehaviour
         switch (currentHearts)
         {
             case 3:
-                heartBeat.volume = .33f;
+            heartBeat.clip = heartbeatSpeeds[2];
                 break;
             case 2:
-                heartBeat.volume = .66f;
 
+            heartBeat.clip = heartbeatSpeeds[1];
                 break;
             case 1:
-                heartBeat.volume = 1f;
 
+            heartBeat.clip = heartbeatSpeeds[0];
                 break;
         }
     }
