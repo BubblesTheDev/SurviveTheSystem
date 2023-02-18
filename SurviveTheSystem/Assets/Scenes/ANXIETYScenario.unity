@@ -11165,6 +11165,7 @@ MonoBehaviour:
   - {fileID: 69279619}
   redDamageThing: {fileID: 1713418221}
   heartBeat: {fileID: 1360134139}
+  heartbeatSpeeds: []
 --- !u!114 &1790382177
 MonoBehaviour:
   m_ObjectHideFlags: 0
