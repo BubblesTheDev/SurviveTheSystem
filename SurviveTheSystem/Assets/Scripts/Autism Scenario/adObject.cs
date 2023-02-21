@@ -8,8 +8,10 @@ public class adObject : MonoBehaviour
 
     public void closeAd()
     {
-        GameObject.Find("Player").GetComponent<CharacterMovement>().canMove = true;
-        StartCoroutine(GameObject.Find("GameManager").GetComponent<autismOverstimulation>().spawnAd());
+        Destroy(transform.Find("CloseButton").gameObject);
         closeSource.Play();
+        Destroy(gameObject, closeSource.clip.length);
+        StartCoroutine(GameObject.Find("GameManager").GetComponent<autismOverstimulation>().spawnAd());
+        StartCoroutine(GameObject.Find("GameManager").GetComponent<autismOverstimulation>().spawnAd());
     }
 }

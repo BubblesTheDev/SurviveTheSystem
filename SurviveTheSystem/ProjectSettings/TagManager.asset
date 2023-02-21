@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Crack
+  - Item
+  - AdObject
+  - Ad
   layers:
   - Default
   - TransparentFX

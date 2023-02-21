@@ -22,6 +22,7 @@ public class autismOverstimulation : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(waitForAnnouncement());
+        StartCoroutine(spawnAd());
     }
 
     private void Update()
@@ -61,5 +62,6 @@ public class autismOverstimulation : MonoBehaviour
 
         playerMovement.canMove = false;
         GameObject temp = Instantiate(adsToSpawn[Random.Range(0, adsToSpawn.Count)], adPlacements[Random.Range(0, adPlacements.Count)].transform.position, Quaternion.identity, GameObject.Find("AdHolder").transform);
+        temp.transform.LookAt(GameObject.Find("Player").transform);
     }
 }

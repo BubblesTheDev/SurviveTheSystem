@@ -15,6 +15,7 @@ public class itemPickup : MonoBehaviour {
     private float currentTime;
     public Image indicatorImage;
     public Sprite handSprite;
+    public Sprite closeSprite;
     public Sprite defaultSprite;
 
 
@@ -23,30 +24,33 @@ public class itemPickup : MonoBehaviour {
     }
 
     public void Update() {
-        RaycastHit hit;
-        Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, pickupRange, itemMask.value);
+        RaycastHit hitSphere;
+        RaycastHit hitRay;
+        Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hitSphere, pickupRange, itemMask.value);
+        Physics.Raycast(transform.position, transform.forward, out hitRay, Mathf.Infinity, adMask.value);
 
-        if (hit.transform != null) indicatorImage.sprite = handSprite;
+        if (hitSphere.transform != null && hitSphere.transform.gameObject.CompareTag("Item")) indicatorImage.sprite = handSprite;
+        else if (hitRay.transform != null && hitRay.transform.gameObject.CompareTag("AdObject")) indicatorImage.sprite = closeSprite;
         else indicatorImage.sprite = defaultSprite;
 
         if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1)) {
-            Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, pickupRange, itemMask.value);
-            if (hit.transform != null && hit.transform.gameObject.CompareTag("Item")) {
+            
+            if (hitSphere.transform != null && hitSphere.transform.gameObject.CompareTag("Item")) {
                 currentTime += Time.deltaTime;
                 if (currentTime > timeToPickupItem) {
-                    if (manager.itemsToPickup.Contains(hit.transform.gameObject)) {
-                        manager.removeItem(hit.transform.gameObject);
+                    if (manager.itemsToPickup.Contains(hitSphere.transform.gameObject)) {
+                        manager.removeItem(hitSphere.transform.gameObject);
                         currentTime = 0;
                     }
                 }
             }
-            Physics.Raycast(transform.position, transform.forward, out hit, pickupRange, adMask.value);
-            if (hit.transform != null && hit.transform.gameObject.CompareTag("Ad"))
+            if (hitRay.transform != null && hitRay.transform.gameObject.CompareTag("AdObject"))
             {
                 currentTime += Time.deltaTime;
                 if (currentTime > timeToPickupItem)
                 {
-                    GetComponentInParent<adObject>().closeAd();
+                    hitRay.transform.gameObject.GetComponentInParent<adObject>().closeAd();
+                    currentTime = 0;
                 }
             }
         } else {

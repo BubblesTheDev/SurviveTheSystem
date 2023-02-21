@@ -8,7 +8,6 @@ public class playerHealth : MonoBehaviour
 {
 
     [SerializeField] private bool deathToMenu;
-    [SerializeField] private int maxHearts = 3;
     public int currentHearts;
     [SerializeField] private GameObject[] healthImage;
     [SerializeField] private Image redDamageThing;

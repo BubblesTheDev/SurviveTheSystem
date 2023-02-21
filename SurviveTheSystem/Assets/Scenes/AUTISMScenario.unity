@@ -312,6 +312,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
 --- !u!4 &19860156 stripped
@@ -409,6 +417,14 @@ PrefabInstance:
     - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
       propertyPath: m_Name
       value: Item (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
@@ -616,6 +632,14 @@ PrefabInstance:
     - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
       propertyPath: m_Name
       value: Item (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
@@ -1445,7 +1469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathToMenu: 0
-  maxHearts: 3
   currentHearts: 3
   healthImage:
   - {fileID: 0}
@@ -1537,9 +1560,13 @@ MonoBehaviour:
   - {fileID: 893548139}
   - {fileID: 40584862}
   - {fileID: 1034092589}
-  adsToSpawn: []
-  minTimeBetweenAds: 20
-  maxTimeBetweenAds: 35
+  adsToSpawn:
+  - {fileID: 3758466398765610004, guid: 4dea4f4bb82f9184eb93328d32269c5d, type: 3}
+  - {fileID: 296926809232738220, guid: 303f254f9394dbc4d913a887ac88af7e, type: 3}
+  - {fileID: 5707160897518774460, guid: 6ccbcc24dadf6f54191ca8e090daf1e8, type: 3}
+  - {fileID: 5380956406592557683, guid: 16b745265b1344a438828cdf2caae9fc, type: 3}
+  minTimeBetweenAds: 1
+  maxTimeBetweenAds: 5
   adIsSpawned: 0
   playerMovement: {fileID: 1542546039}
 --- !u!1 &841961918
@@ -1627,6 +1654,14 @@ PrefabInstance:
     - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
       propertyPath: m_Name
       value: Item (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
@@ -1917,7 +1952,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947392322
 MonoBehaviour:
@@ -1944,7 +1979,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -3550,7 +3585,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855218442
 MonoBehaviour:
@@ -3984,7 +4019,8 @@ MonoBehaviour:
     m_Bits: 128
   selectTimerImage: {fileID: 947392322}
   indicatorImage: {fileID: 1855218442}
-  handSprite: {fileID: 21300000, guid: be340a165cb9c8d4cb50f1deeb51d4ea, type: 3}
+  handSprite: {fileID: 21300000, guid: 899421350a51a844f89a35536d61cbd4, type: 3}
+  closeSprite: {fileID: 21300000, guid: 6d18eeb4a31e59745b5c713de8b9b5ad, type: 3}
   defaultSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &2001886500
 GameObject:
@@ -4364,6 +4400,14 @@ PrefabInstance:
     - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
       propertyPath: m_Name
       value: Item (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012539763015143161, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92e502f0eef664b9d21f55d8a2a334, type: 3}
