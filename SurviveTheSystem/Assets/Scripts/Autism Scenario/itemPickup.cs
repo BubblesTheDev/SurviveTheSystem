@@ -9,6 +9,7 @@ public class itemPickup : MonoBehaviour {
     [SerializeField] float rayCastThickness;
     [SerializeField] private float pickupRange;
     public LayerMask itemMask;
+    public LayerMask adMask;
     private itemManager manager;
     public Image selectTimerImage;
     private float currentTime;
@@ -30,13 +31,22 @@ public class itemPickup : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1)) {
             Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, pickupRange, itemMask.value);
-            if (hit.transform != null) {
+            if (hit.transform != null && hit.transform.gameObject.CompareTag("Item")) {
                 currentTime += Time.deltaTime;
                 if (currentTime > timeToPickupItem) {
                     if (manager.itemsToPickup.Contains(hit.transform.gameObject)) {
                         manager.removeItem(hit.transform.gameObject);
                         currentTime = 0;
                     }
+                }
+            }
+            Physics.Raycast(transform.position, transform.forward, out hit, pickupRange, adMask.value);
+            if (hit.transform != null && hit.transform.gameObject.CompareTag("Ad"))
+            {
+                currentTime += Time.deltaTime;
+                if (currentTime > timeToPickupItem)
+                {
+                    GetComponentInParent<adObject>().closeAd();
                 }
             }
         } else {

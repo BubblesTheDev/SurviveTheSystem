@@ -5,11 +5,19 @@ using UnityEngine;
 public class autismOverstimulation : MonoBehaviour
 {
     [Header("Announcments")]
-    public AudioSource musicSource;
-    public AudioSource announcmentSource;
-    public List<AudioClip> announcements;
-    public float minTimeBetweenAnnouncments, maxTimeBetweenAnnouncements;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource announcmentSource;
+    [SerializeField] private List<AudioClip> announcements;
+    [SerializeField] private float minTimeBetweenAnnouncments, maxTimeBetweenAnnouncements;
     float currentAnnouncementTime;
+
+    [Header("Random Popup ads")]
+    [SerializeField] private List<GameObject> adPlacements;
+    [SerializeField] private List<GameObject> adsToSpawn;
+    [SerializeField] private float minTimeBetweenAds, maxTimeBetweenAds;
+    float currentTimeBetweenAds;
+    [SerializeField] private bool adIsSpawned;
+    [SerializeField] private CharacterMovement playerMovement;
 
     private void Awake()
     {
@@ -44,5 +52,14 @@ public class autismOverstimulation : MonoBehaviour
 
 
         StartCoroutine(playAnnouncement());
+    }
+
+    public IEnumerator spawnAd()
+    {
+        currentTimeBetweenAds = Random.Range(minTimeBetweenAds, maxTimeBetweenAds);
+        yield return new WaitForSeconds(currentTimeBetweenAds);
+
+        playerMovement.canMove = false;
+        GameObject temp = Instantiate(adsToSpawn[Random.Range(0, adsToSpawn.Count)], adPlacements[Random.Range(0, adPlacements.Count)].transform.position, Quaternion.identity, GameObject.Find("AdHolder").transform);
     }
 }
