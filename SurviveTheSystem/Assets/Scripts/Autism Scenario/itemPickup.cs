@@ -12,6 +12,9 @@ public class itemPickup : MonoBehaviour {
     private itemManager manager;
     public Image selectTimerImage;
     private float currentTime;
+    public Image indicatorImage;
+    public Sprite handSprite;
+    public Sprite defaultSprite;
 
 
     private void Awake() {
@@ -19,11 +22,15 @@ public class itemPickup : MonoBehaviour {
     }
 
     public void Update() {
+        RaycastHit hit;
+        Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, pickupRange, itemMask.value);
+
+        if (hit.transform != null) indicatorImage.sprite = handSprite;
+        else indicatorImage.sprite = defaultSprite;
+
         if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1)) {
-            RaycastHit hit;
             Physics.SphereCast(transform.position, rayCastThickness, transform.forward, out hit, pickupRange, itemMask.value);
             if (hit.transform != null) {
-                print(hit.transform.gameObject.name);
                 currentTime += Time.deltaTime;
                 if (currentTime > timeToPickupItem) {
                     if (manager.itemsToPickup.Contains(hit.transform.gameObject)) {

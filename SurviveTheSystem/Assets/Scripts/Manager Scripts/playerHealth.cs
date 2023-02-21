@@ -15,10 +15,12 @@ public class playerHealth : MonoBehaviour
 
     [SerializeField] private AudioSource heartBeat;
     [SerializeField] private AudioClip[] heartbeatSpeeds;
+
+
     private void Update()
     {
         if (currentHearts <= 0 && deathToMenu)  SceneManager.LoadScene(0);
-        controlHeartbeat();
+        
     }
 
 
@@ -30,6 +32,7 @@ public class playerHealth : MonoBehaviour
         if(healthImage.Length > 1) Destroy(healthImage[currentHearts - 1]);
 
         currentHearts--;
+        controlHeartbeat();
     }
 
     public void controlHeartbeat()
@@ -48,6 +51,8 @@ public class playerHealth : MonoBehaviour
             heartBeat.clip = heartbeatSpeeds[0];
                 break;
         }
+
+        heartBeat.Play();
     }
 
 }
