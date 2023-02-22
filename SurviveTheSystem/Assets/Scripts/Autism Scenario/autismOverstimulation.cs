@@ -63,5 +63,6 @@ public class autismOverstimulation : MonoBehaviour
         playerMovement.canMove = false;
         GameObject temp = Instantiate(adsToSpawn[Random.Range(0, adsToSpawn.Count)], adPlacements[Random.Range(0, adPlacements.Count)].transform.position, Quaternion.identity, GameObject.Find("AdHolder").transform);
         temp.transform.LookAt(GameObject.Find("Player").transform);
+        GetComponent<breathingManager>().currentSanity /= Random.Range(1.5f, 2f);
     }
 }
