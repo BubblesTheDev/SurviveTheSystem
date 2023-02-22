@@ -7852,7 +7852,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a319c8572a50b4d4eb6daeca191bba80, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.33
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11140,7 +11140,7 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 64
-  timeToChoose: 1
+  timeToChoose: 3
   choosingBar: {fileID: 1748636048}
   timeToChooseBar: {fileID: 1474633640}
   audioPlayer: {fileID: 0}
@@ -11156,8 +11156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb69fac21f8a26541afa5006db1ae813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathToMenu: 0
-  maxHearts: 3
+  deathToMenu: 1
   currentHearts: 3
   healthImage:
   - {fileID: 347105590}
@@ -11165,7 +11164,10 @@ MonoBehaviour:
   - {fileID: 69279619}
   redDamageThing: {fileID: 1713418221}
   heartBeat: {fileID: 1360134139}
-  heartbeatSpeeds: []
+  heartbeatSpeeds:
+  - {fileID: 8300000, guid: 4d0e27d065331c848a731fb9ebbb0c73, type: 3}
+  - {fileID: 8300000, guid: 3092596640ca85640adf5c86d5e05c06, type: 3}
+  - {fileID: 8300000, guid: d0859bd45612ad3488e1cd6d86b3289e, type: 3}
 --- !u!114 &1790382177
 MonoBehaviour:
   m_ObjectHideFlags: 0

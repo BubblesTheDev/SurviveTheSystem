@@ -182,6 +182,7 @@ public class speechHandeler : MonoBehaviour
         if (hit.transform != null)
         {
             isChoosing = false;
+            hit.transform.gameObject.GetComponent<choiceCounter>().playerIsLooking = true;
             timeToPickupItem += Time.deltaTime;
             if (timeToPickupItem > timeToChoose)
             {
