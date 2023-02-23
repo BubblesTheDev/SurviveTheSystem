@@ -40,17 +40,17 @@ public class breathingManager : MonoBehaviour {
             modifier = 1;
         }
 
-        targetBox.transform.Translate(Vector3.up * moveSpeed * modifier);
+        targetBox.transform.Translate(Vector3.up * moveSpeed * modifier * Time.deltaTime);
     }
 
     void moveFeather() {
         if (Input.GetKey(KeyCode.Space)) {
-            featherIndicator.transform.position = new Vector3(featherIndicator.transform.position.x, featherIndicator.transform.position.y + moveSpeed * 1.75f, featherIndicator.transform.position.z);
+            featherIndicator.transform.Translate(Vector3.up * moveSpeed * 1.75f * Time.deltaTime);
             if (featherIndicator.transform.position.y > maxHeight + 550) {
                 featherIndicator.transform.position = new Vector3(featherIndicator.transform.position.x, maxHeight + 495, featherIndicator.transform.position.z);
             }
         } else {
-            featherIndicator.transform.position = new Vector3(featherIndicator.transform.position.x, featherIndicator.transform.position.y - moveSpeed * 2f, featherIndicator.transform.position.z);
+            featherIndicator.transform.Translate(-Vector3.up * moveSpeed * 2f * Time.deltaTime);
             if (featherIndicator.transform.position.y < 450 - maxHeight) {
                 featherIndicator.transform.position = new Vector3(featherIndicator.transform.position.x, 500, featherIndicator.transform.position.z);
             }
