@@ -20,7 +20,9 @@ public class itemManager : MonoBehaviour
     public AudioSource checkoutSource;
 
     [Header("LeaveStore")]
-    public GameObject leaveStoreIndicator;
+    public GameObject doorToSpawn;
+    public GameObject doorPosition;
+    bool doorIsSpawned;
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class itemManager : MonoBehaviour
     private void Update()
     {
         if (state == stageState.checkoutItems && !hasStartedCheckout && Vector3.Distance(playerObj.transform.position, checkout.transform.position) > distanceToCheckout) StartCoroutine(detectCheckout());
+        leaveStore();
     }
 
     public void removeItem(GameObject itemToRemove)
@@ -51,6 +54,13 @@ public class itemManager : MonoBehaviour
         }
 
         state = stageState.leaveStore;
+    }
+
+    void leaveStore() {
+        if (state == stageState.leaveStore && !doorIsSpawned) {
+            Instantiate(doorToSpawn, doorPosition.transform.position, Quaternion.identity, GameObject.Find("Props").transform);
+            doorIsSpawned = true;
+        }
     }
 }
 
