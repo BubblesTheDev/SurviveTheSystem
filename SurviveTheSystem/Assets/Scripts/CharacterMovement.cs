@@ -24,6 +24,7 @@ public class CharacterMovement : MonoBehaviour
         movZ = Input.GetAxis("Vertical");
 
         moveVector = transform.forward * movZ + transform.right * movX;
-        if(canMove) controller.velocity = moveVector.normalized * speed * Time.deltaTime;
+        if (canMove) controller.velocity = moveVector.normalized * speed * Time.deltaTime;
+        else controller.velocity = Vector3.zero;
     }
 }

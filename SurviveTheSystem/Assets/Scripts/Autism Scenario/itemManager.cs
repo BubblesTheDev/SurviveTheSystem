@@ -47,6 +47,7 @@ public class itemManager : MonoBehaviour
     public IEnumerator detectCheckout()
     {
         playerObj.GetComponent<CharacterMovement>().canMove = false;
+        checkoutInidcator.SetActive(true);
         for (int i = 0; i < itemsToPickup.Count; i++)
         {
             yield return new WaitForSeconds(checkoutWaitTime / itemsToPickup.Count);
