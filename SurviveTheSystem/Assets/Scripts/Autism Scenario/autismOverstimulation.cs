@@ -27,7 +27,7 @@ public class autismOverstimulation : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKey(KeyCode.F1) && adIsSpawned) GameObject.Find("AdHolder").GetComponentInChildren<adObject>().closeAd();
     }
 
     public IEnumerator waitForAnnouncement()
