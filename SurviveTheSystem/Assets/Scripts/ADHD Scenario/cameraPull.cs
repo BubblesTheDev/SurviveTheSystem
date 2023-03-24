@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class cameraPull : MonoBehaviour
 {
-    public GameObject objToPullTo;
-    public GameObject objToPull;
+    public static cameraPull cameraPullScript;
+
     public float currentPullForce, pullForceIncrease;
+    public float offsetToStop = 5f;
+    public float timeToPull;
+    float currentTime;
     public bool isPulling;
 
-
-
-    private void Update() {
-        if(objToPull != null && isPulling) {
-            pullToObject();
-        }
+    private void Awake() {
+        cameraPullScript = this;
     }
 
 
 
-    void pullToObject() {
-        Quaternion.Lerp(Quaternion.LookRotation(objToPullTo.transform.position - objToPull.transform.position, Vector3.up), objToPull.transform.rotation, currentPullForce);
-        currentPullForce *= pullForceIncrease;
+
+
+    public IEnumerator pullToObject(GameObject objToPullTo, GameObject objToPull) {
+        while (objToPull.transform.rotation != objToPullTo.transform.rotation) {
+            Quaternion.Lerp(Quaternion.LookRotation(objToPullTo.transform.position - objToPull.transform.position, Vector3.up), objToPull.transform.rotation, currentPullForce);
+            currentPullForce *= pullForceIncrease * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+
+            currentTime += Time.deltaTime;
+            if(currentTime >= timeToPull) {
+                currentTime = 0;
+                yield return null;
+            }
+        }
     }
 }
