@@ -5,12 +5,8 @@ using System;
 
 public class experienceBase : MonoBehaviour
 {
-    private void Awake()
-    {
-        experienceHandler.current.onExpereienceCall += playExperience;
-    }
 
-    private void playExperience(string obj)
+    public void playExperience(string obj)
     {
         throw new NotImplementedException();
     }
