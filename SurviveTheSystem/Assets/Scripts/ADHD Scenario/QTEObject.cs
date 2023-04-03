@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class QTEObject : MonoBehaviour
 {
@@ -20,8 +19,7 @@ public class QTEObject : MonoBehaviour
     private void Awake()
     {
         handeler = GameObject.Find("GameManager").GetComponent<QTEHandeler>();
-        fillImage = GetComponentInChildren<Image>();
-        GetComponent<TextMeshProUGUI>().text = keyToPress.ToString();
+        fillImage = transform.Find("FillBar").GetComponent<Image>();
         valueToFill = Random.Range(minValueToFill, maxValueToFill);
         decreaseValue *= Random.Range(1, decreaseValueOffset + handeler.QTESCompleted/2);
         currentValue = valueToFill / 3;

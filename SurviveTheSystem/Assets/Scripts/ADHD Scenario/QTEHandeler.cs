@@ -15,13 +15,11 @@ public class QTEHandeler : MonoBehaviour
     public bool canSpawnQTE;
     public playerHealth health;
 
-    public TextMeshProUGUI QTECountTex;
 
 
     private void Awake()
     {
         spawnQTE();
-        QTECountTex.text = "Youve Stopped yourself from stimming " + QTESCompleted + " times! Good Job at being a good student and hiding your neruodivergency!";
 
     }
 
@@ -35,7 +33,6 @@ public class QTEHandeler : MonoBehaviour
         if (completed)
         {
             QTESCompleted++;
-            QTECountTex.text = "Youve Stopped yourself from stimming " + QTESCompleted + " times! Good Job at being a good student and hiding your neruodivergency!";
             StartCoroutine(QTETimer());
         }
         else
@@ -60,8 +57,8 @@ public class QTEHandeler : MonoBehaviour
         KeyCode temp = keysForQTE[Random.Range(0, keysForQTE.Count)];
 
         currentQTE.GetComponent<QTEObject>().keyToPress = temp;
-        currentQTE.GetComponent<Text>().text = temp.ToString();
-        currentQTE.GetComponentInChildren<Image>().sprite = backgroundsForQTE[Random.Range(0, backgroundsForQTE.Count)];
+        currentQTE.transform.Find("Text").GetComponent<Text>().text = temp.ToString();
+        currentQTE.transform.Find("Background").GetComponent<Image>().sprite = backgroundsForQTE[Random.Range(0, backgroundsForQTE.Count)];
         currentQTE.transform.localScale = Vector3.one * Random.Range(.75f, 1.5f);
         
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class experienceHandler : MonoBehaviour {
     public static experienceHandler current;
-    public List<experienceStats> experiences;
+    public experienceStats[] experiences;
     [SerializeField] private float minTimeBetweenExp, maxTimeBetweenExp;
     [SerializeField] private bool isPlaying;
     private float currentTime;
@@ -15,14 +15,20 @@ public class experienceHandler : MonoBehaviour {
         current = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.F1)) StartCoroutine(callExperience("Rain"));
+        if (Input.GetKeyUp(KeyCode.F2)) StartCoroutine(callExperience("Phone"));
+        if (Input.GetKeyUp(KeyCode.F3)) StartCoroutine(callExperience("Power"));
+    }
+
     public IEnumerator callExperience(string experienceToCall) {
 
         isPlaying = true;
 
         //finds the current experience where its name matches the experience to call, then calls its spesific action
-        current.experiences.Where(experiences => experiences.name == experienceToCall).FirstOrDefault().experienceObject.playExperience(experienceToCall);
-        if (current.experiences.Where(experiences => experiences.name == experienceToCall).FirstOrDefault().isLimited) experiences.Remove(current.experiences.Where(experiences => experiences.name == experienceToCall).FirstOrDefault());
-
+        Array.Find(current.experiences, experienceStats => experienceStats.name == experienceToCall).experienceObject.playExperience(experienceToCall);
+        yield return new WaitForSeconds(10f);
 
         currentTime = UnityEngine.Random.Range(minTimeBetweenExp, maxTimeBetweenExp);
         yield return new WaitForSeconds(currentTime);

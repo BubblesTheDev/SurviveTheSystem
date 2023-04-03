@@ -6,6 +6,8 @@ public class cameraControl : MonoBehaviour
 {
     public float minAngle ,maxAngle;
     public float sensX, sensY;
+    public bool lockYRot;
+    public float yLockMin, yLockMax;
 
     public Transform orientation;
 
@@ -36,7 +38,12 @@ public class cameraControl : MonoBehaviour
     {
 
         xRot = Mathf.Clamp(xRot, minAngle, maxAngle);
-        
+
+        if (lockYRot)
+        {
+            yRot = Mathf.Clamp(yRot, yLockMin, yLockMax);
+        }
+
         transform.rotation = Quaternion.Euler(xRot, yRot, 0);
         orientation.rotation = Quaternion.Euler(0, yRot, 0);
     }
