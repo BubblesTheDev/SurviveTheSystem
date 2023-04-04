@@ -19,7 +19,8 @@ public class QTEHandeler : MonoBehaviour
 
     private void Awake()
     {
-        spawnQTE();
+        canSpawnQTE = false;
+        StartCoroutine(QTETimer());
 
     }
 
@@ -54,6 +55,7 @@ public class QTEHandeler : MonoBehaviour
         Vector2 posToSpawnQTE = new Vector2(Random.Range(125, 1800), Random.Range(250, 840));
         currentQTE = Instantiate(QTEPrefab, posToSpawnQTE, Quaternion.identity, GameObject.Find("QTE Holder").transform);
 
+        soundManager.playClip("stimm");
         KeyCode temp = keysForQTE[Random.Range(0, keysForQTE.Count)];
 
         currentQTE.GetComponent<QTEObject>().keyToPress = temp;

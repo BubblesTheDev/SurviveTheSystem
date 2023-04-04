@@ -10,16 +10,21 @@ public class experienceHandler : MonoBehaviour {
     [SerializeField] private float minTimeBetweenExp, maxTimeBetweenExp;
     [SerializeField] private bool isPlaying;
     private float currentTime;
+    public float scenarioTime;
 
     private void Awake() {
         current = this;
+        StartCoroutine(sceneTimer());
+        isPlaying = true;
+
+        StartCoroutine(startingTime());
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F1)) StartCoroutine(callExperience("Rain"));
-        if (Input.GetKeyUp(KeyCode.F2)) StartCoroutine(callExperience("Phone"));
-        if (Input.GetKeyUp(KeyCode.F3)) StartCoroutine(callExperience("Power"));
+
+
+        if (!isPlaying) StartCoroutine(callExperience(experiences[UnityEngine.Random.Range(0, experiences.Length)].name));
     }
 
     public IEnumerator callExperience(string experienceToCall) {
@@ -34,12 +39,25 @@ public class experienceHandler : MonoBehaviour {
         yield return new WaitForSeconds(currentTime);
         isPlaying = false;
     }
+
+    public IEnumerator startingTime()
+    {
+        yield return new WaitForSeconds(10f);
+        isPlaying = false;
+    }
+
+    public IEnumerator sceneTimer()
+    {
+        yield return new WaitForSeconds(240f);
+        soundManager.playClip("bell");
+        yield return new WaitForSeconds(4f);
+        sceneManagmentFunctions.loadScene(0);
+    }
 }
 
 [System.Serializable]
 public struct experienceStats {
     public string name;
     public experienceBase experienceObject;
-    public float experienceChance;
     public bool isLimited;
 }

@@ -16,13 +16,20 @@ public class cameraPull : MonoBehaviour
         cameraPullScript = this;
     }
 
+    private void Update()
+    {
+        
+    }
 
+    public void pullCamera()
+    {
 
-
+    }
 
     public IEnumerator pullToObject(GameObject objToPullTo, GameObject objToPull) {
-        while (objToPull.transform.rotation != objToPullTo.transform.rotation) {
-            Quaternion.Lerp(Quaternion.LookRotation(objToPullTo.transform.position - objToPull.transform.position, Vector3.up), objToPull.transform.rotation, currentPullForce);
+        while (true) {
+            
+            Quaternion.Lerp(objToPullTo.transform.rotation, objToPull.transform.rotation, currentPullForce);
             currentPullForce *= pullForceIncrease * Time.deltaTime;
             yield return new WaitForEndOfFrame();
 

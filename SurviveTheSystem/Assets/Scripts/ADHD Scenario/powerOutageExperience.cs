@@ -10,7 +10,7 @@ public class powerOutageExperience : experienceBase
     public List<GameObject> people;
     public override void playExperience(string obj)
     {
-        if(GameObject.Find("Lesson") != null) soundManager.togglePause("lesson");
+        soundManager.togglePause("lesson");
         soundManager.playClip("whispers");
         soundManager.playClip(obj);
 
@@ -48,8 +48,7 @@ public class powerOutageExperience : experienceBase
         soundManager.togglePause("lesson");
 
 
-        yield return new WaitForSeconds(Random.Range(25,40f));
-
+        yield return new WaitForSeconds(Random.Range(10f,15f));
         foreach (GameObject item in lights)
         {
             item.SetActive(true);

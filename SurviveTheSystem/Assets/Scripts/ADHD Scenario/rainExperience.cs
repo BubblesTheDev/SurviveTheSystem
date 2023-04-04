@@ -12,5 +12,6 @@ public class rainExperience : experienceBase
         isActive = true;
         rainParticle.Play();
         soundManager.playClip(obj);
+        StartCoroutine(cameraPull.cameraPullScript.pullToObject(Camera.main.gameObject, GameObject.Find("Rain Particles")));
     }
 }

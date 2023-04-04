@@ -21,7 +21,7 @@ public class QTEObject : MonoBehaviour
         handeler = GameObject.Find("GameManager").GetComponent<QTEHandeler>();
         fillImage = transform.Find("FillBar").GetComponent<Image>();
         valueToFill = Random.Range(minValueToFill, maxValueToFill);
-        decreaseValue *= Random.Range(1, decreaseValueOffset + handeler.QTESCompleted/2);
+        decreaseValue *= Random.Range(1, decreaseValueOffset + handeler.QTESCompleted/5);
         currentValue = valueToFill / 3;
     }
 

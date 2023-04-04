@@ -38,8 +38,11 @@ public class soundManager : MonoBehaviour
     public static void togglePause(string soundToPause)
     {
         GameObject soundsHolder = GameObject.Find("soundsHolder");
-        if (soundsHolder.transform.Find(soundToPause).GetComponent<AudioSource>().isPlaying) soundsHolder.transform.Find(soundToPause).GetComponent<AudioSource>().Pause();
-        else soundsHolder.transform.Find(soundToPause).GetComponent<AudioSource>().UnPause();
+        if (soundsHolder.transform.Find(soundToPause))
+        {
+            if (soundsHolder.transform.Find(soundToPause).GetComponent<AudioSource>().isPlaying) soundsHolder.transform.Find(soundToPause).GetComponent<AudioSource>().Pause();
+            else soundsHolder.transform.Find(soundToPause).GetComponent<AudioSource>().UnPause();
+        }
     }
 }
 

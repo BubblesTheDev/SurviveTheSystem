@@ -17,7 +17,8 @@ public class teacherHandler : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rotateScript = GetComponent<rotateBackAndForthVertical>();
-        index = 0;
+        index = (int)Random.Range(0, actions.Count);
+        soundManager.playClip("lesson");
     }
 
 
@@ -31,23 +32,27 @@ public class teacherHandler : MonoBehaviour
         isDoingAction = true;
 
         agent.SetDestination(actions[index].referenceToEnd.transform.position);
-        while (!agent.isStopped)
+        while (agent.remainingDistance < 0.5f)
         {
             yield return new WaitForEndOfFrame();
         }
 
         transform.rotation = Quaternion.LookRotation(actions[index].referenceToEnd.transform.rotation.eulerAngles);
-        if (actions[index].actionSound != null) soundManager.playClip(actions[index].actionSound);
+        if (actions[index].actionSound != "") soundManager.playClip(actions[index].actionSound);
         if (actions[index].rotate)
         {
+            print("start rotating");
             rotateScript.enabled = true;
             yield return new WaitForSeconds(actions[index].rotateDuration);
+            rotateScript.enabled = false;
+            transform.rotation = Quaternion.LookRotation(actions[index].referenceToEnd.transform.rotation.eulerAngles);
+            print("stop rotating");
         }
 
+            print("wait time");
         float timeToWait = Random.Range(minTimeActions, maxTimeActions);
         yield return new WaitForSeconds(timeToWait);
-        index++;
-        if (index >= actions.Count) index = 0;
+        index = (int)Random.Range(0, actions.Count);
         isDoingAction = false;
     }
 

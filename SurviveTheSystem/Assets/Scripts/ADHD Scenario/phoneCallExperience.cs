@@ -21,6 +21,7 @@ public class phoneCallExperience : experienceBase
         GameObject temp = peopleToChooseFrom[Random.Range(0, peopleToChooseFrom.Length)];
         temp.GetComponent<rotateBackAndForthVertical>().enabled = true;
 
+        StartCoroutine(cameraPull.cameraPullScript.pullToObject(Camera.main.gameObject, temp));
         yield return new WaitForSeconds(3);
 
         temp.GetComponent<rotateBackAndForthVertical>().enabled = false;
